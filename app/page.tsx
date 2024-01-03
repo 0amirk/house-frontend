@@ -17,7 +17,7 @@ const Page: React.FC = () => {
       <Navbar />
       <div className="container mx-auto">
         <SearchBar onSearch={handleSearch} />
-        <Jobs searchQuery={searchQuery} />
+        <Jobs />
       </div>
     </div>
   );

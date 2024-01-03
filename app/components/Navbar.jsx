@@ -4,6 +4,10 @@ import { FiMenu, FiX } from "react-icons/fi";
 
 const navLinks = [
   {
+    title: "Home",
+    path: "/"
+  },
+  {
     title: "Login",
     path: "/login",
   },

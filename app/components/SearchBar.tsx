@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import axios from "../api/axios";
+import Jobs from "./Jobs";
 
 interface SearchBarProps {
   onSearch: (query: string, jobType1: string) => void;
@@ -9,8 +11,30 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [query, setQuery] = useState("");
   const [jobType1, setJobType1] = useState("");
 
-  const handleSearch = () => {
+  const handleSearch1 = () => {
     onSearch(query, jobType1);
+  };
+
+  //post/search/query?search=Delhi&sort=desc
+
+  const handleSearch: React.FormEventHandler = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(
+        `post/search/query?search=${query}&sort=${jobType1}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true
+        }
+      );
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -40,8 +64,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           className="px-4 w-36 h-10 md:w-60 bg-[#333] text-white rounded-lg outline-none"
         >
           <option value="">Select Year</option>
-          <option value="SE">SE</option>
-          <option value="TE">TE</option>
+          <option value="asc">asc</option>
+          <option value="desc">desc</option>
           <option value="BE">BE</option>
         </select>
       </div>
