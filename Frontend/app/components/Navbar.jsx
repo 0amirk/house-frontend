@@ -7,6 +7,10 @@ const navLinks = [
     title: "Login",
     path: "/login",
   },
+  {
+    title: "Sign Up",
+    path: "/signup",
+  },
 ];
 
 const Navbar = () => {
