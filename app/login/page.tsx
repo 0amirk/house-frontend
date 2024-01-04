@@ -25,7 +25,7 @@ const Page: React.FC = () => {
           withCredentials: true
         }
       );
-      Cookies.set('Authorization',response.headers['authorization'],{ expires: 2, path: '/' });
+      Cookies.set('Authorization',response.headers['authorization'],{ sameSite: 'none', secure: true , expires: 2, path: '/' });
       if(response.data.accessToken) {
         setTimeout(()=> {
           router.push('/')
