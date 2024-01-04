@@ -2,8 +2,11 @@
 import axios from "../api/axios";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import Cookies from 'js-cookie';
+import { useRouter } from "next/navigation";
 
 const Page: React.FC = () => {
+  const router = useRouter()
   const handleSubmit: React.FormEventHandler = async (
     e: React.FormEvent<HTMLFormElement>
   ) => {
@@ -22,7 +25,12 @@ const Page: React.FC = () => {
           withCredentials: true
         }
       );
-      
+      Cookies.set('Authorization',response.headers['authorization'],{ expires: 2, path: '/' });
+      if(response.data.accessToken) {
+        setTimeout(()=> {
+          router.push('/')
+        },2000)
+      }
       console.log(response)
     } catch (err) {
       console.log(err);
