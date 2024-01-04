@@ -24,7 +24,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     e.preventDefault();
     try {
       const response = await axios.get(
-        `post/search/query?search=${query}&sort=${jobType1}`,
+        `/post/search/query?search=${query}&sort=${jobType1}`,
         {
           headers: {
             "Content-Type": "application/json",
