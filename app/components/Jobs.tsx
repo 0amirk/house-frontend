@@ -1,8 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-const url: string = 'http://localhost:4000/post'
+import axios from "../api/axios";
 
 const Jobs: any = (job: any) => {
   const [jobs, setJobs] = useState([])
@@ -10,7 +8,7 @@ const Jobs: any = (job: any) => {
 
   useEffect(() => {
     axios.get(
-      url, {
+      '/post', {
         headers: {
           "Content-Type": "application/json",
         },
