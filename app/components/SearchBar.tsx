@@ -10,6 +10,7 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [query, setQuery] = useState("");
   const [jobType1, setJobType1] = useState("");
+  const [jobs, setJobs] = useState([]);
 
   const handleSearch1 = () => {
     onSearch(query, jobType1);
@@ -30,12 +31,17 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           },
           withCredentials: true
         }
-      );
-      console.log(response.data);
+      ).then((res) => res.data)
+      .then((data) => {
+        console.log(data)
+        setJobs(data)
+      })
     } catch (err) {
       console.log(err);
     }
   };
+  
+  <Jobs job={jobs}/>
 
   return (
     <div className="mt-40 mb-10 lg:bg-[#121212] p-4 h-auto md:h-72 sm:h-72 flex flex-col justify-center rounded-lg items-center">
@@ -63,10 +69,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           onChange={(e) => setJobType1(e.target.value)}
           className="px-4 w-36 h-10 md:w-60 bg-[#333] text-white rounded-lg outline-none"
         >
-          <option value="">Select Year</option>
+          <option value="">Sort</option>
           <option value="asc">asc</option>
           <option value="desc">desc</option>
-          <option value="BE">BE</option>
         </select>
       </div>
     </div>
