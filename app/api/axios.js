@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://house-backend.vercel.app/",
+  baseURL: "https://house-backend.vercel.app/", // Prod 
 });
