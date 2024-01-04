@@ -29,7 +29,7 @@ const Page: React.FC = () => {
       if(response.data.accessToken) {
         setTimeout(()=> {
           router.push('/')
-        },2000)
+        },1000)
       }
       console.log(response)
     } catch (err) {
