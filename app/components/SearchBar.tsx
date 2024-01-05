@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "../api/axios";
 import Jobs from "./Jobs";
+import cookieCutter from '@boiseitguru/cookie-cutter'
 
 interface SearchBarProps {
   onSearch: (query: string, jobType1: string) => void;
@@ -28,6 +29,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         {
           headers: {
             "Content-Type": "application/json",
+            "Authorization": "Bearer " + cookieCutter.get('Authorization')
           },
           withCredentials: true
         }

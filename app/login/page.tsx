@@ -1,9 +1,10 @@
 "use client";
 import axios from "../api/axios";
-import { useState } from "react";
+import  React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Cookies from 'js-cookie';
 import { useRouter } from "next/navigation";
+import cookieCutter from '@boiseitguru/cookie-cutter'
 
 const Page: React.FC = () => {
   const router = useRouter()

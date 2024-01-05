@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import axios from "../api/axios";
+import cookieCutter from '@boiseitguru/cookie-cutter'
 
 const Jobs: any = (job: any) => {
   const [jobs, setJobs] = useState([])
@@ -11,6 +12,7 @@ const Jobs: any = (job: any) => {
       '/post', {
         headers: {
           "Content-Type": "application/json",
+          "Authorization": "Bearer " + cookieCutter.get('Authorization')
         },
         withCredentials: true
       }
